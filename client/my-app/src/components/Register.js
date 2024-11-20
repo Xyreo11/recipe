@@ -20,13 +20,15 @@ const Register = () => {
 
     try {
       const response = await fetch(
-        "https://recipe-app-mern.onrender.com/auth/register",
+        "http://localhost:5000/auth/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, email: Email, password }),
         }
       );
+
+      console.log(response)
 
       if (response.ok) {
         const user = await response.json();
@@ -44,7 +46,7 @@ const Register = () => {
         console.error("Failed to register user:", response.status);
       }
     } catch (error) {
-      toast.error("An error occurred while registering user:", error);
+      toast.error("An error occurred while registering user: 1", error);
     }
   };
 

@@ -1,0 +1,1203 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement
+Rule 3     statement_list -> statement_list statement
+Rule 4     statement -> for_loop
+Rule 5     statement -> assignment
+Rule 6     statement -> function_def
+Rule 7     statement -> print_statement
+Rule 8     statement -> expression
+Rule 9     assignment -> ID EQUALS expression
+Rule 10    function_def -> DEF ID LPAREN param_list RPAREN COLON
+Rule 11    param_list -> ID
+Rule 12    param_list -> ID COMMA param_list
+Rule 13    param_list -> empty
+Rule 14    for_loop -> FOR ID IN expression COLON
+Rule 15    expression -> range_expr
+Rule 16    expression -> list_expr
+Rule 17    expression -> ID
+Rule 18    expression -> NUMBER
+Rule 19    expression -> STRING
+Rule 20    expression -> expression PLUS expression
+Rule 21    expression -> expression MINUS expression
+Rule 22    expression -> expression TIMES expression
+Rule 23    expression -> expression DIVIDE expression
+Rule 24    range_expr -> RANGE LPAREN range_params RPAREN
+Rule 25    range_params -> expression
+Rule 26    range_params -> expression COMMA expression
+Rule 27    range_params -> expression COMMA expression COMMA expression
+Rule 28    list_expr -> LBRACKET list_items RBRACKET
+Rule 29    list_items -> expression
+Rule 30    list_items -> expression COMMA list_items
+Rule 31    print_statement -> PRINT LPAREN expression RPAREN
+Rule 32    empty -> <empty>
+
+Terminals, with rules where they appear
+
+COLON                : 10 14
+COMMA                : 12 26 27 27 30
+DEF                  : 10
+DIVIDE               : 23
+EQUALS               : 9
+FOR                  : 14
+ID                   : 9 10 11 12 14 17
+IN                   : 14
+LBRACKET             : 28
+LPAREN               : 10 24 31
+MINUS                : 21
+NUMBER               : 18
+PLUS                 : 20
+PRINT                : 31
+RANGE                : 24
+RBRACKET             : 28
+RPAREN               : 10 24 31
+STRING               : 19
+TIMES                : 22
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignment           : 5
+empty                : 13
+expression           : 8 9 14 20 20 21 21 22 22 23 23 25 26 26 27 27 27 29 30 31
+for_loop             : 4
+function_def         : 6
+list_expr            : 16
+list_items           : 28 30
+param_list           : 10 12
+print_statement      : 7
+program              : 0
+range_expr           : 15
+range_params         : 24
+statement            : 2 3
+statement_list       : 1 3
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement_list statement
+    (4) statement -> . for_loop
+    (5) statement -> . assignment
+    (6) statement -> . function_def
+    (7) statement -> . print_statement
+    (8) statement -> . expression
+    (14) for_loop -> . FOR ID IN expression COLON
+    (9) assignment -> . ID EQUALS expression
+    (10) function_def -> . DEF ID LPAREN param_list RPAREN COLON
+    (31) print_statement -> . PRINT LPAREN expression RPAREN
+    (15) expression -> . range_expr
+    (16) expression -> . list_expr
+    (17) expression -> . ID
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) range_expr -> . RANGE LPAREN range_params RPAREN
+    (28) list_expr -> . LBRACKET list_items RBRACKET
+
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    DEF             shift and go to state 11
+    PRINT           shift and go to state 12
+    NUMBER          shift and go to state 15
+    STRING          shift and go to state 16
+    RANGE           shift and go to state 17
+    LBRACKET        shift and go to state 18
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+    for_loop                       shift and go to state 4
+    assignment                     shift and go to state 5
+    function_def                   shift and go to state 6
+    print_statement                shift and go to state 7
+    expression                     shift and go to state 8
+    range_expr                     shift and go to state 13
+    list_expr                      shift and go to state 14
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+    (3) statement_list -> statement_list . statement
+    (4) statement -> . for_loop
+    (5) statement -> . assignment
+    (6) statement -> . function_def
+    (7) statement -> . print_statement
+    (8) statement -> . expression
+    (14) for_loop -> . FOR ID IN expression COLON
+    (9) assignment -> . ID EQUALS expression
+    (10) function_def -> . DEF ID LPAREN param_list RPAREN COLON
+    (31) print_statement -> . PRINT LPAREN expression RPAREN
+    (15) expression -> . range_expr
+    (16) expression -> . list_expr
+    (17) expression -> . ID
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) range_expr -> . RANGE LPAREN range_params RPAREN
+    (28) list_expr -> . LBRACKET list_items RBRACKET
+
+    $end            reduce using rule 1 (program -> statement_list .)
+    FOR             shift and go to state 9
+    ID              shift and go to state 10
+    DEF             shift and go to state 11
+    PRINT           shift and go to state 12
+    NUMBER          shift and go to state 15
+    STRING          shift and go to state 16
+    RANGE           shift and go to state 17
+    LBRACKET        shift and go to state 18
+
+    statement                      shift and go to state 19
+    for_loop                       shift and go to state 4
+    assignment                     shift and go to state 5
+    function_def                   shift and go to state 6
+    print_statement                shift and go to state 7
+    expression                     shift and go to state 8
+    range_expr                     shift and go to state 13
+    list_expr                      shift and go to state 14
+
+state 3
+
+    (2) statement_list -> statement .
+
+    FOR             reduce using rule 2 (statement_list -> statement .)
+    ID              reduce using rule 2 (statement_list -> statement .)
+    DEF             reduce using rule 2 (statement_list -> statement .)
+    PRINT           reduce using rule 2 (statement_list -> statement .)
+    NUMBER          reduce using rule 2 (statement_list -> statement .)
+    STRING          reduce using rule 2 (statement_list -> statement .)
+    RANGE           reduce using rule 2 (statement_list -> statement .)
+    LBRACKET        reduce using rule 2 (statement_list -> statement .)
+    $end            reduce using rule 2 (statement_list -> statement .)
+
+
+state 4
+
+    (4) statement -> for_loop .
+
+    FOR             reduce using rule 4 (statement -> for_loop .)
+    ID              reduce using rule 4 (statement -> for_loop .)
+    DEF             reduce using rule 4 (statement -> for_loop .)
+    PRINT           reduce using rule 4 (statement -> for_loop .)
+    NUMBER          reduce using rule 4 (statement -> for_loop .)
+    STRING          reduce using rule 4 (statement -> for_loop .)
+    RANGE           reduce using rule 4 (statement -> for_loop .)
+    LBRACKET        reduce using rule 4 (statement -> for_loop .)
+    $end            reduce using rule 4 (statement -> for_loop .)
+
+
+state 5
+
+    (5) statement -> assignment .
+
+    FOR             reduce using rule 5 (statement -> assignment .)
+    ID              reduce using rule 5 (statement -> assignment .)
+    DEF             reduce using rule 5 (statement -> assignment .)
+    PRINT           reduce using rule 5 (statement -> assignment .)
+    NUMBER          reduce using rule 5 (statement -> assignment .)
+    STRING          reduce using rule 5 (statement -> assignment .)
+    RANGE           reduce using rule 5 (statement -> assignment .)
+    LBRACKET        reduce using rule 5 (statement -> assignment .)
+    $end            reduce using rule 5 (statement -> assignment .)
+
+
+state 6
+
+    (6) statement -> function_def .
+
+    FOR             reduce using rule 6 (statement -> function_def .)
+    ID              reduce using rule 6 (statement -> function_def .)
+    DEF             reduce using rule 6 (statement -> function_def .)
+    PRINT           reduce using rule 6 (statement -> function_def .)
+    NUMBER          reduce using rule 6 (statement -> function_def .)
+    STRING          reduce using rule 6 (statement -> function_def .)
+    RANGE           reduce using rule 6 (statement -> function_def .)
+    LBRACKET        reduce using rule 6 (statement -> function_def .)
+    $end            reduce using rule 6 (statement -> function_def .)
+
+
+state 7
+
+    (7) statement -> print_statement .
+
+    FOR             reduce using rule 7 (statement -> print_statement .)
+    ID              reduce using rule 7 (statement -> print_statement .)
+    DEF             reduce using rule 7 (statement -> print_statement .)
+    PRINT           reduce using rule 7 (statement -> print_statement .)
+    NUMBER          reduce using rule 7 (statement -> print_statement .)
+    STRING          reduce using rule 7 (statement -> print_statement .)
+    RANGE           reduce using rule 7 (statement -> print_statement .)
+    LBRACKET        reduce using rule 7 (statement -> print_statement .)
+    $end            reduce using rule 7 (statement -> print_statement .)
+
+
+state 8
+
+    (8) statement -> expression .
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+
+    FOR             reduce using rule 8 (statement -> expression .)
+    ID              reduce using rule 8 (statement -> expression .)
+    DEF             reduce using rule 8 (statement -> expression .)
+    PRINT           reduce using rule 8 (statement -> expression .)
+    NUMBER          reduce using rule 8 (statement -> expression .)
+    STRING          reduce using rule 8 (statement -> expression .)
+    RANGE           reduce using rule 8 (statement -> expression .)
+    LBRACKET        reduce using rule 8 (statement -> expression .)
+    $end            reduce using rule 8 (statement -> expression .)
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    TIMES           shift and go to state 22
+    DIVIDE          shift and go to state 23
+
+
+state 9
+
+    (14) for_loop -> FOR . ID IN expression COLON
+
+    ID              shift and go to state 24
+
+
+state 10
+
+    (9) assignment -> ID . EQUALS expression
+    (17) expression -> ID .
+
+    EQUALS          shift and go to state 25
+    PLUS            reduce using rule 17 (expression -> ID .)
+    MINUS           reduce using rule 17 (expression -> ID .)
+    TIMES           reduce using rule 17 (expression -> ID .)
+    DIVIDE          reduce using rule 17 (expression -> ID .)
+    FOR             reduce using rule 17 (expression -> ID .)
+    ID              reduce using rule 17 (expression -> ID .)
+    DEF             reduce using rule 17 (expression -> ID .)
+    PRINT           reduce using rule 17 (expression -> ID .)
+    NUMBER          reduce using rule 17 (expression -> ID .)
+    STRING          reduce using rule 17 (expression -> ID .)
+    RANGE           reduce using rule 17 (expression -> ID .)
+    LBRACKET        reduce using rule 17 (expression -> ID .)
+    $end            reduce using rule 17 (expression -> ID .)
+
+
+state 11
+
+    (10) function_def -> DEF . ID LPAREN param_list RPAREN COLON
+
+    ID              shift and go to state 26
+
+
+state 12
+
+    (31) print_statement -> PRINT . LPAREN expression RPAREN
+
+    LPAREN          shift and go to state 27
+
+
+state 13
+
+    (15) expression -> range_expr .
+
+    PLUS            reduce using rule 15 (expression -> range_expr .)
+    MINUS           reduce using rule 15 (expression -> range_expr .)
+    TIMES           reduce using rule 15 (expression -> range_expr .)
+    DIVIDE          reduce using rule 15 (expression -> range_expr .)
+    FOR             reduce using rule 15 (expression -> range_expr .)
+    ID              reduce using rule 15 (expression -> range_expr .)
+    DEF             reduce using rule 15 (expression -> range_expr .)
+    PRINT           reduce using rule 15 (expression -> range_expr .)
+    NUMBER          reduce using rule 15 (expression -> range_expr .)
+    STRING          reduce using rule 15 (expression -> range_expr .)
+    RANGE           reduce using rule 15 (expression -> range_expr .)
+    LBRACKET        reduce using rule 15 (expression -> range_expr .)
+    $end            reduce using rule 15 (expression -> range_expr .)
+    COMMA           reduce using rule 15 (expression -> range_expr .)
+    RBRACKET        reduce using rule 15 (expression -> range_expr .)
+    RPAREN          reduce using rule 15 (expression -> range_expr .)
+    COLON           reduce using rule 15 (expression -> range_expr .)
+
+
+state 14
+
+    (16) expression -> list_expr .
+
+    PLUS            reduce using rule 16 (expression -> list_expr .)
+    MINUS           reduce using rule 16 (expression -> list_expr .)
+    TIMES           reduce using rule 16 (expression -> list_expr .)
+    DIVIDE          reduce using rule 16 (expression -> list_expr .)
+    FOR             reduce using rule 16 (expression -> list_expr .)
+    ID              reduce using rule 16 (expression -> list_expr .)
+    DEF             reduce using rule 16 (expression -> list_expr .)
+    PRINT           reduce using rule 16 (expression -> list_expr .)
+    NUMBER          reduce using rule 16 (expression -> list_expr .)
+    STRING          reduce using rule 16 (expression -> list_expr .)
+    RANGE           reduce using rule 16 (expression -> list_expr .)
+    LBRACKET        reduce using rule 16 (expression -> list_expr .)
+    $end            reduce using rule 16 (expression -> list_expr .)
+    COMMA           reduce using rule 16 (expression -> list_expr .)
+    RBRACKET        reduce using rule 16 (expression -> list_expr .)
+    RPAREN          reduce using rule 16 (expression -> list_expr .)
+    COLON           reduce using rule 16 (expression -> list_expr .)
+
+
+state 15
+
+    (18) expression -> NUMBER .
+
+    PLUS            reduce using rule 18 (expression -> NUMBER .)
+    MINUS           reduce using rule 18 (expression -> NUMBER .)
+    TIMES           reduce using rule 18 (expression -> NUMBER .)
+    DIVIDE          reduce using rule 18 (expression -> NUMBER .)
+    FOR             reduce using rule 18 (expression -> NUMBER .)
+    ID              reduce using rule 18 (expression -> NUMBER .)
+    DEF             reduce using rule 18 (expression -> NUMBER .)
+    PRINT           reduce using rule 18 (expression -> NUMBER .)
+    NUMBER          reduce using rule 18 (expression -> NUMBER .)
+    STRING          reduce using rule 18 (expression -> NUMBER .)
+    RANGE           reduce using rule 18 (expression -> NUMBER .)
+    LBRACKET        reduce using rule 18 (expression -> NUMBER .)
+    $end            reduce using rule 18 (expression -> NUMBER .)
+    COMMA           reduce using rule 18 (expression -> NUMBER .)
+    RBRACKET        reduce using rule 18 (expression -> NUMBER .)
+    RPAREN          reduce using rule 18 (expression -> NUMBER .)
+    COLON           reduce using rule 18 (expression -> NUMBER .)
+
+
+state 16
+
+    (19) expression -> STRING .
+
+    PLUS            reduce using rule 19 (expression -> STRING .)
+    MINUS           reduce using rule 19 (expression -> STRING .)
+    TIMES           reduce using rule 19 (expression -> STRING .)
+    DIVIDE          reduce using rule 19 (expression -> STRING .)
+    FOR             reduce using rule 19 (expression -> STRING .)
+    ID              reduce using rule 19 (expression -> STRING .)
+    DEF             reduce using rule 19 (expression -> STRING .)
+    PRINT           reduce using rule 19 (expression -> STRING .)
+    NUMBER          reduce using rule 19 (expression -> STRING .)
+    STRING          reduce using rule 19 (expression -> STRING .)
+    RANGE           reduce using rule 19 (expression -> STRING .)
+    LBRACKET        reduce using rule 19 (expression -> STRING .)
+    $end            reduce using rule 19 (expression -> STRING .)
+    COMMA           reduce using rule 19 (expression -> STRING .)
+    RBRACKET        reduce using rule 19 (expression -> STRING .)
+    RPAREN          reduce using rule 19 (expression -> STRING .)
+    COLON           reduce using rule 19 (expression -> STRING .)
+
+
+state 17
+
+    (24) range_expr -> RANGE . LPAREN range_params RPAREN
+
+    LPAREN          shift and go to state 28
+
+
+state 18
+
+    (28) list_expr -> LBRACKET . list_items RBRACKET
+    (29) list_items -> . expression
+    (30) list_items -> . expression COMMA list_items
+    (15) expression -> . range_expr
+    (16) expression -> . list_expr
+    (17) expression -> . ID
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) range_expr -> . RANGE LPAREN range_params RPAREN
+    (28) list_expr -> . LBRACKET list_items RBRACKET
+
+    ID              shift and go to state 31
+    NUMBER          shift and go to state 15
+    STRING          shift and go to state 16
+    RANGE           shift and go to state 17
+    LBRACKET        shift and go to state 18
+
+    list_items                     shift and go to state 29
+    expression                     shift and go to state 30
+    range_expr                     shift and go to state 13
+    list_expr                      shift and go to state 14
+
+state 19
+
+    (3) statement_list -> statement_list statement .
+
+    FOR             reduce using rule 3 (statement_list -> statement_list statement .)
+    ID              reduce using rule 3 (statement_list -> statement_list statement .)
+    DEF             reduce using rule 3 (statement_list -> statement_list statement .)
+    PRINT           reduce using rule 3 (statement_list -> statement_list statement .)
+    NUMBER          reduce using rule 3 (statement_list -> statement_list statement .)
+    STRING          reduce using rule 3 (statement_list -> statement_list statement .)
+    RANGE           reduce using rule 3 (statement_list -> statement_list statement .)
+    LBRACKET        reduce using rule 3 (statement_list -> statement_list statement .)
+    $end            reduce using rule 3 (statement_list -> statement_list statement .)
+
+
+state 20
+
+    (20) expression -> expression PLUS . expression
+    (15) expression -> . range_expr
+    (16) expression -> . list_expr
+    (17) expression -> . ID
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) range_expr -> . RANGE LPAREN range_params RPAREN
+    (28) list_expr -> . LBRACKET list_items RBRACKET
+
+    ID              shift and go to state 31
+    NUMBER          shift and go to state 15
+    STRING          shift and go to state 16
+    RANGE           shift and go to state 17
+    LBRACKET        shift and go to state 18
+
+    expression                     shift and go to state 32
+    range_expr                     shift and go to state 13
+    list_expr                      shift and go to state 14
+
+state 21
+
+    (21) expression -> expression MINUS . expression
+    (15) expression -> . range_expr
+    (16) expression -> . list_expr
+    (17) expression -> . ID
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) range_expr -> . RANGE LPAREN range_params RPAREN
+    (28) list_expr -> . LBRACKET list_items RBRACKET
+
+    ID              shift and go to state 31
+    NUMBER          shift and go to state 15
+    STRING          shift and go to state 16
+    RANGE           shift and go to state 17
+    LBRACKET        shift and go to state 18
+
+    expression                     shift and go to state 33
+    range_expr                     shift and go to state 13
+    list_expr                      shift and go to state 14
+
+state 22
+
+    (22) expression -> expression TIMES . expression
+    (15) expression -> . range_expr
+    (16) expression -> . list_expr
+    (17) expression -> . ID
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) range_expr -> . RANGE LPAREN range_params RPAREN
+    (28) list_expr -> . LBRACKET list_items RBRACKET
+
+    ID              shift and go to state 31
+    NUMBER          shift and go to state 15
+    STRING          shift and go to state 16
+    RANGE           shift and go to state 17
+    LBRACKET        shift and go to state 18
+
+    expression                     shift and go to state 34
+    range_expr                     shift and go to state 13
+    list_expr                      shift and go to state 14
+
+state 23
+
+    (23) expression -> expression DIVIDE . expression
+    (15) expression -> . range_expr
+    (16) expression -> . list_expr
+    (17) expression -> . ID
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) range_expr -> . RANGE LPAREN range_params RPAREN
+    (28) list_expr -> . LBRACKET list_items RBRACKET
+
+    ID              shift and go to state 31
+    NUMBER          shift and go to state 15
+    STRING          shift and go to state 16
+    RANGE           shift and go to state 17
+    LBRACKET        shift and go to state 18
+
+    expression                     shift and go to state 35
+    range_expr                     shift and go to state 13
+    list_expr                      shift and go to state 14
+
+state 24
+
+    (14) for_loop -> FOR ID . IN expression COLON
+
+    IN              shift and go to state 36
+
+
+state 25
+
+    (9) assignment -> ID EQUALS . expression
+    (15) expression -> . range_expr
+    (16) expression -> . list_expr
+    (17) expression -> . ID
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) range_expr -> . RANGE LPAREN range_params RPAREN
+    (28) list_expr -> . LBRACKET list_items RBRACKET
+
+    ID              shift and go to state 31
+    NUMBER          shift and go to state 15
+    STRING          shift and go to state 16
+    RANGE           shift and go to state 17
+    LBRACKET        shift and go to state 18
+
+    expression                     shift and go to state 37
+    range_expr                     shift and go to state 13
+    list_expr                      shift and go to state 14
+
+state 26
+
+    (10) function_def -> DEF ID . LPAREN param_list RPAREN COLON
+
+    LPAREN          shift and go to state 38
+
+
+state 27
+
+    (31) print_statement -> PRINT LPAREN . expression RPAREN
+    (15) expression -> . range_expr
+    (16) expression -> . list_expr
+    (17) expression -> . ID
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) range_expr -> . RANGE LPAREN range_params RPAREN
+    (28) list_expr -> . LBRACKET list_items RBRACKET
+
+    ID              shift and go to state 31
+    NUMBER          shift and go to state 15
+    STRING          shift and go to state 16
+    RANGE           shift and go to state 17
+    LBRACKET        shift and go to state 18
+
+    expression                     shift and go to state 39
+    range_expr                     shift and go to state 13
+    list_expr                      shift and go to state 14
+
+state 28
+
+    (24) range_expr -> RANGE LPAREN . range_params RPAREN
+    (25) range_params -> . expression
+    (26) range_params -> . expression COMMA expression
+    (27) range_params -> . expression COMMA expression COMMA expression
+    (15) expression -> . range_expr
+    (16) expression -> . list_expr
+    (17) expression -> . ID
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) range_expr -> . RANGE LPAREN range_params RPAREN
+    (28) list_expr -> . LBRACKET list_items RBRACKET
+
+    ID              shift and go to state 31
+    NUMBER          shift and go to state 15
+    STRING          shift and go to state 16
+    RANGE           shift and go to state 17
+    LBRACKET        shift and go to state 18
+
+    range_params                   shift and go to state 40
+    expression                     shift and go to state 41
+    range_expr                     shift and go to state 13
+    list_expr                      shift and go to state 14
+
+state 29
+
+    (28) list_expr -> LBRACKET list_items . RBRACKET
+
+    RBRACKET        shift and go to state 42
+
+
+state 30
+
+    (29) list_items -> expression .
+    (30) list_items -> expression . COMMA list_items
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+
+    RBRACKET        reduce using rule 29 (list_items -> expression .)
+    COMMA           shift and go to state 43
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    TIMES           shift and go to state 22
+    DIVIDE          shift and go to state 23
+
+
+state 31
+
+    (17) expression -> ID .
+
+    COMMA           reduce using rule 17 (expression -> ID .)
+    PLUS            reduce using rule 17 (expression -> ID .)
+    MINUS           reduce using rule 17 (expression -> ID .)
+    TIMES           reduce using rule 17 (expression -> ID .)
+    DIVIDE          reduce using rule 17 (expression -> ID .)
+    RBRACKET        reduce using rule 17 (expression -> ID .)
+    FOR             reduce using rule 17 (expression -> ID .)
+    ID              reduce using rule 17 (expression -> ID .)
+    DEF             reduce using rule 17 (expression -> ID .)
+    PRINT           reduce using rule 17 (expression -> ID .)
+    NUMBER          reduce using rule 17 (expression -> ID .)
+    STRING          reduce using rule 17 (expression -> ID .)
+    RANGE           reduce using rule 17 (expression -> ID .)
+    LBRACKET        reduce using rule 17 (expression -> ID .)
+    $end            reduce using rule 17 (expression -> ID .)
+    RPAREN          reduce using rule 17 (expression -> ID .)
+    COLON           reduce using rule 17 (expression -> ID .)
+
+
+state 32
+
+    (20) expression -> expression PLUS expression .
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+
+    PLUS            reduce using rule 20 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 20 (expression -> expression PLUS expression .)
+    FOR             reduce using rule 20 (expression -> expression PLUS expression .)
+    ID              reduce using rule 20 (expression -> expression PLUS expression .)
+    DEF             reduce using rule 20 (expression -> expression PLUS expression .)
+    PRINT           reduce using rule 20 (expression -> expression PLUS expression .)
+    NUMBER          reduce using rule 20 (expression -> expression PLUS expression .)
+    STRING          reduce using rule 20 (expression -> expression PLUS expression .)
+    RANGE           reduce using rule 20 (expression -> expression PLUS expression .)
+    LBRACKET        reduce using rule 20 (expression -> expression PLUS expression .)
+    $end            reduce using rule 20 (expression -> expression PLUS expression .)
+    COMMA           reduce using rule 20 (expression -> expression PLUS expression .)
+    RBRACKET        reduce using rule 20 (expression -> expression PLUS expression .)
+    RPAREN          reduce using rule 20 (expression -> expression PLUS expression .)
+    COLON           reduce using rule 20 (expression -> expression PLUS expression .)
+    TIMES           shift and go to state 22
+    DIVIDE          shift and go to state 23
+
+  ! TIMES           [ reduce using rule 20 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 20 (expression -> expression PLUS expression .) ]
+  ! PLUS            [ shift and go to state 20 ]
+  ! MINUS           [ shift and go to state 21 ]
+
+
+state 33
+
+    (21) expression -> expression MINUS expression .
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+
+    PLUS            reduce using rule 21 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 21 (expression -> expression MINUS expression .)
+    FOR             reduce using rule 21 (expression -> expression MINUS expression .)
+    ID              reduce using rule 21 (expression -> expression MINUS expression .)
+    DEF             reduce using rule 21 (expression -> expression MINUS expression .)
+    PRINT           reduce using rule 21 (expression -> expression MINUS expression .)
+    NUMBER          reduce using rule 21 (expression -> expression MINUS expression .)
+    STRING          reduce using rule 21 (expression -> expression MINUS expression .)
+    RANGE           reduce using rule 21 (expression -> expression MINUS expression .)
+    LBRACKET        reduce using rule 21 (expression -> expression MINUS expression .)
+    $end            reduce using rule 21 (expression -> expression MINUS expression .)
+    COMMA           reduce using rule 21 (expression -> expression MINUS expression .)
+    RBRACKET        reduce using rule 21 (expression -> expression MINUS expression .)
+    RPAREN          reduce using rule 21 (expression -> expression MINUS expression .)
+    COLON           reduce using rule 21 (expression -> expression MINUS expression .)
+    TIMES           shift and go to state 22
+    DIVIDE          shift and go to state 23
+
+  ! TIMES           [ reduce using rule 21 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 21 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ shift and go to state 20 ]
+  ! MINUS           [ shift and go to state 21 ]
+
+
+state 34
+
+    (22) expression -> expression TIMES expression .
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+
+    PLUS            reduce using rule 22 (expression -> expression TIMES expression .)
+    MINUS           reduce using rule 22 (expression -> expression TIMES expression .)
+    TIMES           reduce using rule 22 (expression -> expression TIMES expression .)
+    DIVIDE          reduce using rule 22 (expression -> expression TIMES expression .)
+    FOR             reduce using rule 22 (expression -> expression TIMES expression .)
+    ID              reduce using rule 22 (expression -> expression TIMES expression .)
+    DEF             reduce using rule 22 (expression -> expression TIMES expression .)
+    PRINT           reduce using rule 22 (expression -> expression TIMES expression .)
+    NUMBER          reduce using rule 22 (expression -> expression TIMES expression .)
+    STRING          reduce using rule 22 (expression -> expression TIMES expression .)
+    RANGE           reduce using rule 22 (expression -> expression TIMES expression .)
+    LBRACKET        reduce using rule 22 (expression -> expression TIMES expression .)
+    $end            reduce using rule 22 (expression -> expression TIMES expression .)
+    COMMA           reduce using rule 22 (expression -> expression TIMES expression .)
+    RBRACKET        reduce using rule 22 (expression -> expression TIMES expression .)
+    RPAREN          reduce using rule 22 (expression -> expression TIMES expression .)
+    COLON           reduce using rule 22 (expression -> expression TIMES expression .)
+
+  ! PLUS            [ shift and go to state 20 ]
+  ! MINUS           [ shift and go to state 21 ]
+  ! TIMES           [ shift and go to state 22 ]
+  ! DIVIDE          [ shift and go to state 23 ]
+
+
+state 35
+
+    (23) expression -> expression DIVIDE expression .
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+
+    PLUS            reduce using rule 23 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 23 (expression -> expression DIVIDE expression .)
+    TIMES           reduce using rule 23 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 23 (expression -> expression DIVIDE expression .)
+    FOR             reduce using rule 23 (expression -> expression DIVIDE expression .)
+    ID              reduce using rule 23 (expression -> expression DIVIDE expression .)
+    DEF             reduce using rule 23 (expression -> expression DIVIDE expression .)
+    PRINT           reduce using rule 23 (expression -> expression DIVIDE expression .)
+    NUMBER          reduce using rule 23 (expression -> expression DIVIDE expression .)
+    STRING          reduce using rule 23 (expression -> expression DIVIDE expression .)
+    RANGE           reduce using rule 23 (expression -> expression DIVIDE expression .)
+    LBRACKET        reduce using rule 23 (expression -> expression DIVIDE expression .)
+    $end            reduce using rule 23 (expression -> expression DIVIDE expression .)
+    COMMA           reduce using rule 23 (expression -> expression DIVIDE expression .)
+    RBRACKET        reduce using rule 23 (expression -> expression DIVIDE expression .)
+    RPAREN          reduce using rule 23 (expression -> expression DIVIDE expression .)
+    COLON           reduce using rule 23 (expression -> expression DIVIDE expression .)
+
+  ! PLUS            [ shift and go to state 20 ]
+  ! MINUS           [ shift and go to state 21 ]
+  ! TIMES           [ shift and go to state 22 ]
+  ! DIVIDE          [ shift and go to state 23 ]
+
+
+state 36
+
+    (14) for_loop -> FOR ID IN . expression COLON
+    (15) expression -> . range_expr
+    (16) expression -> . list_expr
+    (17) expression -> . ID
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) range_expr -> . RANGE LPAREN range_params RPAREN
+    (28) list_expr -> . LBRACKET list_items RBRACKET
+
+    ID              shift and go to state 31
+    NUMBER          shift and go to state 15
+    STRING          shift and go to state 16
+    RANGE           shift and go to state 17
+    LBRACKET        shift and go to state 18
+
+    expression                     shift and go to state 44
+    range_expr                     shift and go to state 13
+    list_expr                      shift and go to state 14
+
+state 37
+
+    (9) assignment -> ID EQUALS expression .
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+
+    FOR             reduce using rule 9 (assignment -> ID EQUALS expression .)
+    ID              reduce using rule 9 (assignment -> ID EQUALS expression .)
+    DEF             reduce using rule 9 (assignment -> ID EQUALS expression .)
+    PRINT           reduce using rule 9 (assignment -> ID EQUALS expression .)
+    NUMBER          reduce using rule 9 (assignment -> ID EQUALS expression .)
+    STRING          reduce using rule 9 (assignment -> ID EQUALS expression .)
+    RANGE           reduce using rule 9 (assignment -> ID EQUALS expression .)
+    LBRACKET        reduce using rule 9 (assignment -> ID EQUALS expression .)
+    $end            reduce using rule 9 (assignment -> ID EQUALS expression .)
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    TIMES           shift and go to state 22
+    DIVIDE          shift and go to state 23
+
+
+state 38
+
+    (10) function_def -> DEF ID LPAREN . param_list RPAREN COLON
+    (11) param_list -> . ID
+    (12) param_list -> . ID COMMA param_list
+    (13) param_list -> . empty
+    (32) empty -> .
+
+    ID              shift and go to state 45
+    RPAREN          reduce using rule 32 (empty -> .)
+
+    param_list                     shift and go to state 46
+    empty                          shift and go to state 47
+
+state 39
+
+    (31) print_statement -> PRINT LPAREN expression . RPAREN
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+
+    RPAREN          shift and go to state 48
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    TIMES           shift and go to state 22
+    DIVIDE          shift and go to state 23
+
+
+state 40
+
+    (24) range_expr -> RANGE LPAREN range_params . RPAREN
+
+    RPAREN          shift and go to state 49
+
+
+state 41
+
+    (25) range_params -> expression .
+    (26) range_params -> expression . COMMA expression
+    (27) range_params -> expression . COMMA expression COMMA expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+
+    RPAREN          reduce using rule 25 (range_params -> expression .)
+    COMMA           shift and go to state 50
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    TIMES           shift and go to state 22
+    DIVIDE          shift and go to state 23
+
+
+state 42
+
+    (28) list_expr -> LBRACKET list_items RBRACKET .
+
+    PLUS            reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+    MINUS           reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+    TIMES           reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+    DIVIDE          reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+    FOR             reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+    ID              reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+    DEF             reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+    PRINT           reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+    NUMBER          reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+    STRING          reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+    RANGE           reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+    LBRACKET        reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+    $end            reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+    COMMA           reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+    RBRACKET        reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+    RPAREN          reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+    COLON           reduce using rule 28 (list_expr -> LBRACKET list_items RBRACKET .)
+
+
+state 43
+
+    (30) list_items -> expression COMMA . list_items
+    (29) list_items -> . expression
+    (30) list_items -> . expression COMMA list_items
+    (15) expression -> . range_expr
+    (16) expression -> . list_expr
+    (17) expression -> . ID
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) range_expr -> . RANGE LPAREN range_params RPAREN
+    (28) list_expr -> . LBRACKET list_items RBRACKET
+
+    ID              shift and go to state 31
+    NUMBER          shift and go to state 15
+    STRING          shift and go to state 16
+    RANGE           shift and go to state 17
+    LBRACKET        shift and go to state 18
+
+    expression                     shift and go to state 30
+    list_items                     shift and go to state 51
+    range_expr                     shift and go to state 13
+    list_expr                      shift and go to state 14
+
+state 44
+
+    (14) for_loop -> FOR ID IN expression . COLON
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+
+    COLON           shift and go to state 52
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    TIMES           shift and go to state 22
+    DIVIDE          shift and go to state 23
+
+
+state 45
+
+    (11) param_list -> ID .
+    (12) param_list -> ID . COMMA param_list
+
+    RPAREN          reduce using rule 11 (param_list -> ID .)
+    COMMA           shift and go to state 53
+
+
+state 46
+
+    (10) function_def -> DEF ID LPAREN param_list . RPAREN COLON
+
+    RPAREN          shift and go to state 54
+
+
+state 47
+
+    (13) param_list -> empty .
+
+    RPAREN          reduce using rule 13 (param_list -> empty .)
+
+
+state 48
+
+    (31) print_statement -> PRINT LPAREN expression RPAREN .
+
+    FOR             reduce using rule 31 (print_statement -> PRINT LPAREN expression RPAREN .)
+    ID              reduce using rule 31 (print_statement -> PRINT LPAREN expression RPAREN .)
+    DEF             reduce using rule 31 (print_statement -> PRINT LPAREN expression RPAREN .)
+    PRINT           reduce using rule 31 (print_statement -> PRINT LPAREN expression RPAREN .)
+    NUMBER          reduce using rule 31 (print_statement -> PRINT LPAREN expression RPAREN .)
+    STRING          reduce using rule 31 (print_statement -> PRINT LPAREN expression RPAREN .)
+    RANGE           reduce using rule 31 (print_statement -> PRINT LPAREN expression RPAREN .)
+    LBRACKET        reduce using rule 31 (print_statement -> PRINT LPAREN expression RPAREN .)
+    $end            reduce using rule 31 (print_statement -> PRINT LPAREN expression RPAREN .)
+
+
+state 49
+
+    (24) range_expr -> RANGE LPAREN range_params RPAREN .
+
+    PLUS            reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+    MINUS           reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+    TIMES           reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+    DIVIDE          reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+    FOR             reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+    ID              reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+    DEF             reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+    PRINT           reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+    NUMBER          reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+    STRING          reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+    RANGE           reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+    LBRACKET        reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+    $end            reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+    COMMA           reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+    RBRACKET        reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+    RPAREN          reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+    COLON           reduce using rule 24 (range_expr -> RANGE LPAREN range_params RPAREN .)
+
+
+state 50
+
+    (26) range_params -> expression COMMA . expression
+    (27) range_params -> expression COMMA . expression COMMA expression
+    (15) expression -> . range_expr
+    (16) expression -> . list_expr
+    (17) expression -> . ID
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) range_expr -> . RANGE LPAREN range_params RPAREN
+    (28) list_expr -> . LBRACKET list_items RBRACKET
+
+    ID              shift and go to state 31
+    NUMBER          shift and go to state 15
+    STRING          shift and go to state 16
+    RANGE           shift and go to state 17
+    LBRACKET        shift and go to state 18
+
+    expression                     shift and go to state 55
+    range_expr                     shift and go to state 13
+    list_expr                      shift and go to state 14
+
+state 51
+
+    (30) list_items -> expression COMMA list_items .
+
+    RBRACKET        reduce using rule 30 (list_items -> expression COMMA list_items .)
+
+
+state 52
+
+    (14) for_loop -> FOR ID IN expression COLON .
+
+    FOR             reduce using rule 14 (for_loop -> FOR ID IN expression COLON .)
+    ID              reduce using rule 14 (for_loop -> FOR ID IN expression COLON .)
+    DEF             reduce using rule 14 (for_loop -> FOR ID IN expression COLON .)
+    PRINT           reduce using rule 14 (for_loop -> FOR ID IN expression COLON .)
+    NUMBER          reduce using rule 14 (for_loop -> FOR ID IN expression COLON .)
+    STRING          reduce using rule 14 (for_loop -> FOR ID IN expression COLON .)
+    RANGE           reduce using rule 14 (for_loop -> FOR ID IN expression COLON .)
+    LBRACKET        reduce using rule 14 (for_loop -> FOR ID IN expression COLON .)
+    $end            reduce using rule 14 (for_loop -> FOR ID IN expression COLON .)
+
+
+state 53
+
+    (12) param_list -> ID COMMA . param_list
+    (11) param_list -> . ID
+    (12) param_list -> . ID COMMA param_list
+    (13) param_list -> . empty
+    (32) empty -> .
+
+    ID              shift and go to state 45
+    RPAREN          reduce using rule 32 (empty -> .)
+
+    param_list                     shift and go to state 56
+    empty                          shift and go to state 47
+
+state 54
+
+    (10) function_def -> DEF ID LPAREN param_list RPAREN . COLON
+
+    COLON           shift and go to state 57
+
+
+state 55
+
+    (26) range_params -> expression COMMA expression .
+    (27) range_params -> expression COMMA expression . COMMA expression
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+
+    RPAREN          reduce using rule 26 (range_params -> expression COMMA expression .)
+    COMMA           shift and go to state 58
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    TIMES           shift and go to state 22
+    DIVIDE          shift and go to state 23
+
+
+state 56
+
+    (12) param_list -> ID COMMA param_list .
+
+    RPAREN          reduce using rule 12 (param_list -> ID COMMA param_list .)
+
+
+state 57
+
+    (10) function_def -> DEF ID LPAREN param_list RPAREN COLON .
+
+    FOR             reduce using rule 10 (function_def -> DEF ID LPAREN param_list RPAREN COLON .)
+    ID              reduce using rule 10 (function_def -> DEF ID LPAREN param_list RPAREN COLON .)
+    DEF             reduce using rule 10 (function_def -> DEF ID LPAREN param_list RPAREN COLON .)
+    PRINT           reduce using rule 10 (function_def -> DEF ID LPAREN param_list RPAREN COLON .)
+    NUMBER          reduce using rule 10 (function_def -> DEF ID LPAREN param_list RPAREN COLON .)
+    STRING          reduce using rule 10 (function_def -> DEF ID LPAREN param_list RPAREN COLON .)
+    RANGE           reduce using rule 10 (function_def -> DEF ID LPAREN param_list RPAREN COLON .)
+    LBRACKET        reduce using rule 10 (function_def -> DEF ID LPAREN param_list RPAREN COLON .)
+    $end            reduce using rule 10 (function_def -> DEF ID LPAREN param_list RPAREN COLON .)
+
+
+state 58
+
+    (27) range_params -> expression COMMA expression COMMA . expression
+    (15) expression -> . range_expr
+    (16) expression -> . list_expr
+    (17) expression -> . ID
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . expression PLUS expression
+    (21) expression -> . expression MINUS expression
+    (22) expression -> . expression TIMES expression
+    (23) expression -> . expression DIVIDE expression
+    (24) range_expr -> . RANGE LPAREN range_params RPAREN
+    (28) list_expr -> . LBRACKET list_items RBRACKET
+
+    ID              shift and go to state 31
+    NUMBER          shift and go to state 15
+    STRING          shift and go to state 16
+    RANGE           shift and go to state 17
+    LBRACKET        shift and go to state 18
+
+    expression                     shift and go to state 59
+    range_expr                     shift and go to state 13
+    list_expr                      shift and go to state 14
+
+state 59
+
+    (27) range_params -> expression COMMA expression COMMA expression .
+    (20) expression -> expression . PLUS expression
+    (21) expression -> expression . MINUS expression
+    (22) expression -> expression . TIMES expression
+    (23) expression -> expression . DIVIDE expression
+
+    RPAREN          reduce using rule 27 (range_params -> expression COMMA expression COMMA expression .)
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 21
+    TIMES           shift and go to state 22
+    DIVIDE          shift and go to state 23
+
